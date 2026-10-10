@@ -1,0 +1,300 @@
+/* ==========================================================================
+   PERSONA 3 RELOAD - CONTACT SCREEN (MAIL / Phone UI Style)
+   ========================================================================== */
+:root {
+  --mail-skew: -12.5deg;
+  --mail-rot: -1.6deg;
+}
+
+/* .p3r-contact-screen inherits base layout from .p3r-slink-screen */
+
+.p3r-contact-overlay {
+  background: radial-gradient(circle at 65% 45%, rgba(2, 12, 30, 0.4) 0%, rgba(1, 6, 16, 0.88) 100%);
+}
+
+.p3r-contact-viewport {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: clamp(10px, 2.5vw, 40px);
+  position: relative;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Slanted Message Phone Pad Wrapper - Large size matching P3R reference */
+.p3r-mail-phone-wrap {
+  position: relative;
+  width: clamp(760px, 50vw, 980px);
+  height: clamp(750px, 85vh, 890px);
+  transform: skewX(var(--mail-skew)) rotate(var(--mail-rot));
+  transform-origin: left bottom;
+  user-select: none;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* SVG Chassis Background: Distinct White Linear Frame & Extended Black Body */
+.p3r-mail-chassis-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* Phone Card Contents Area inside the White Linear Frame */
+.p3r-mail-phone-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 34px 42px 38px 36px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header with prominent MAIL watermark */
+.p3r-mail-header-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 12px;
+  height: 82px;
+}
+
+.p3r-mail-watermark {
+  font-family: var(--font-rodin), sans-serif;
+  font-size: clamp(5.6rem, 6.5vw, 7.6rem);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.05em;
+  color: #ffffff; /* Lebih Putih Bersih Sesuai Permintaan */
+  line-height: 0.9;
+  pointer-events: none;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.9), 0 6px 18px rgba(0, 0, 0, 0.95);
+  user-select: none;
+  transform: translateY(4px);
+}
+
+/* List Container for Contact Rows */
+.p3r-mail-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 1.8vh, 18px);
+  position: relative;
+  padding-right: 28px;
+  margin-top: 4px;
+}
+
+/* Individual Mail Card Row - Taller, Larger like reference */
+.p3r-mail-row {
+  display: flex;
+  height: clamp(94px, 10.4vh, 110px);
+  background: #111724;
+  border: 1.5px solid #1f2c40;
+  border-radius: 4px;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+/* Slanted Left Icon Block - Wide diagonal cut */
+.p3r-mail-icon-block {
+  width: 140px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);
+  transition: transform 0.2s ease;
+}
+
+.p3r-mail-gmail {
+  background: #ea4335;
+  color: #ffffff;
+}
+
+.p3r-mail-github {
+  background: #24292e;
+  color: #ffffff;
+}
+
+.p3r-mail-tiktok {
+  background: #010101;
+  color: #00f2fe;
+}
+
+.p3r-mail-instagram {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: #ffffff;
+}
+
+.p3r-mail-linkedin {
+  background: #0a66c2;
+  color: #ffffff;
+}
+
+/* Right Content Area */
+.p3r-mail-content-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 24px 8px 16px;
+  overflow: hidden;
+}
+
+.p3r-mail-sender-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #8fa2bd;
+  font-family: var(--font-skip), sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.18rem;
+  line-height: 1;
+  transition: color 0.18s ease;
+}
+
+.p3r-mail-env-icon {
+  flex-shrink: 0;
+  transition: color 0.18s ease;
+}
+
+.p3r-mail-sender-name {
+  letter-spacing: 0.02em;
+}
+
+.p3r-mail-row-line {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.14);
+  margin: 7px 0 6px 0;
+  transition: background 0.18s ease;
+}
+
+.p3r-mail-msg-text {
+  font-family: var(--font-skip), sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.38rem;
+  color: #f1f5f9;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.18s ease;
+}
+
+/* Hover & Active State - Solid White, Tanpa Glowing Biru */
+.p3r-mail-row:hover,
+.p3r-mail-row.active {
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5) !important; /* Glowing Biru Dihilangkan Total */
+  transform: translateX(10px);
+}
+
+.p3r-mail-row:hover .p3r-mail-sender-row,
+.p3r-mail-row.active .p3r-mail-sender-row {
+  color: #0c182b !important; /* Teks Hitam Pekat Persona, Bukan Biru Glowing */
+}
+
+.p3r-mail-row:hover .p3r-mail-env-icon,
+.p3r-mail-row.active .p3r-mail-env-icon {
+  color: #ea4335 !important; /* Ikon Amplop Merah Gmail */
+}
+
+.p3r-mail-row:hover .p3r-mail-row-line,
+.p3r-mail-row.active .p3r-mail-row-line {
+  background: rgba(0, 0, 0, 0.18) !important; /* Garis Pemisah Abu Gelap Bersih */
+}
+
+.p3r-mail-row:hover .p3r-mail-msg-text,
+.p3r-mail-row.active .p3r-mail-msg-text {
+  color: #061122 !important;
+  font-weight: 900;
+}
+
+/* Empty Slots Styling (Kosong) */
+.p3r-mail-row-empty {
+  opacity: 0.28;
+  cursor: default;
+  pointer-events: none;
+  background: rgba(12, 17, 26, 0.5) !important;
+  border: 1px dashed rgba(255, 255, 255, 0.12) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.p3r-mail-empty-icon {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+.p3r-mail-empty-text {
+  color: #485c78 !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+}
+
+/* Bottom Left HUD: ESC Close Button moved to Bottom-Left Corner per user request */
+.p3r-contact-bottom-hud {
+  position: fixed;
+  bottom: 3.5vh;
+  left: 3vw;
+  z-index: 30;
+  pointer-events: auto;
+}
+
+/* Hide phone pad while circle transition is still expanding */
+.p3r-contact-screen:not(.active) .p3r-mail-phone-wrap,
+.p3r-contact-screen.circle-transitioning .p3r-mail-phone-wrap {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Persona 3 Reload Slide + Rotate Right (Berputar ke Kanan) Entrance Animation
+   Dipercepat sedikit (0.78s) dan dioptimalkan hardware acceleration translate3d tanpa patah-patah */
+@keyframes p3rMailPhoneSlideIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(-300px, 0, 0) skewX(var(--mail-skew)) rotate(-15deg);
+  }
+  35% {
+    opacity: 1;
+  }
+  74% {
+    transform: translate3d(12px, 0, 0) skewX(var(--mail-skew)) rotate(0.6deg);
+  }
+  88% {
+    transform: translate3d(-3px, 0, 0) skewX(var(--mail-skew)) rotate(-2.2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) skewX(var(--mail-skew)) rotate(var(--mail-rot));
+  }
+}
+
+.p3r-contact-screen.active .p3r-mail-phone-wrap {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  animation: p3rMailPhoneSlideIn 0.78s cubic-bezier(0.16, 0.95, 0.26, 1) forwards;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+

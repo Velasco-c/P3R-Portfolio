@@ -1,0 +1,86 @@
+/* ==========================================================================
+   Persona 3 Reload Shattered Geometric Header (Full-Bleed to Screen Left Edge)
+   ========================================================================== */
+.p3r-geometric-header {
+  position: relative;
+  width: clamp(620px, 45vw, 820px);
+  height: clamp(102px, 12vh, 124px);
+  margin-top: 0;
+  margin-bottom: clamp(26px, 3.4vh, 38px);
+  overflow: visible;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  transform: rotate(-4.2deg);
+  transform-origin: left center;
+  cursor: default;
+  user-select: none;
+}
+
+/* Page Open Entrance Animation */
+.p3r-geometric-header.animating,
+.p3r-slink-screen.circle-transitioning .p3r-geometric-header,
+.p3r-slink-screen.active .p3r-geometric-header {
+  animation: p3rBannerSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes p3rBannerSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-150px) rotate(-4.2deg);
+  }
+  68% {
+    opacity: 1;
+    transform: translateX(12px) rotate(-4.2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(-4.2deg);
+  }
+}
+
+/* Solid Light-Blue Hard Shadow Band Behind PROJECT Banner */
+.p3r-shard-back-band {
+  position: absolute;
+  left: -106px;
+  top: -8px;
+  width: calc(100% + 120px);
+  height: 100%;
+  background: #16cffb; /* Solid Light Blue (Persona 3 Reload Cyan) */
+  clip-path: polygon(0 0, 50% 10%, 53% 0%, 100% 0%, calc(100% - 48px) 100%, 0 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Main Dark Midnight Blue Razor-Cut Banner (Extending all the way from screen left edge!) */
+.p3r-header-slash-main {
+  position: absolute;
+  left: -120px;
+  top: 0;
+  width: calc(100% + 120px);
+  height: 100%;
+  background: linear-gradient(90deg, #020914 0%, #041224 55%, #061c3b 100%);
+  clip-path: polygon(0 0, 50% 10%, 53% 0%, 100% 0%, calc(100% - 48px) 100%, 0 100%);
+  z-index: 2;
+  box-shadow: 0 6px 28px rgba(0, 5, 18, 0.85);
+}
+
+/* Bold Crisp Pure White Persona 3 Reload Title - Matching Menu Utama Font & Slant */
+.p3r-banner-title {
+  position: relative;
+  z-index: 3;
+  margin-left: 5.0vw;
+  font-family: var(--font-rodin), sans-serif;
+  font-size: clamp(4.0rem, 4.8vw, 5.2rem);
+  font-style: italic;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  text-shadow: none;
+  transform: skewX(-14deg);
+  display: inline-block;
+  user-select: none;
+  padding-top: 10px;
+}
+

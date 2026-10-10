@@ -1,0 +1,252 @@
+/* ==========================================================================
+   Cards Stack (Collinear Parallel Slanted Layout: -22deg matching Screenshot)
+   ========================================================================== */
+.slink-cards-container {
+  margin-left: 5.0vw;
+  --slink-skew: -22deg;
+  --card-height: clamp(70px, 9.0vh, 84px);
+  --card-gap: clamp(10px, 1.4vh, 15px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+  width: fit-content;
+  position: relative;
+}
+
+/* All cards share the EXACT SAME uniform slant (-22deg) with subtle staircase offset */
+.slink-card {
+  --card-skew: -22deg;
+  --card-unskew: 22deg;
+  --card-offset-x: 0px;
+  width: clamp(580px, 51.5vw, 760px);
+  height: var(--card-height);
+  transform: skewX(var(--card-skew)) translateX(0px);
+  margin-left: calc(var(--card-idx, 0) * 0.45vw);
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  user-select: none;
+  text-align: left;
+
+  /* Staggered non-simultaneous entrance animation */
+  animation: slinkCardSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.slink-card:nth-child(1) { --card-delay: 0ms;   animation-delay: calc(var(--card-delay) + 90ms); }
+.slink-card:nth-child(2) { --card-delay: 50ms;  animation-delay: calc(var(--card-delay) + 90ms); }
+.slink-card:nth-child(3) { --card-delay: 100ms; animation-delay: calc(var(--card-delay) + 90ms); }
+.slink-card:nth-child(4) { --card-delay: 150ms; animation-delay: calc(var(--card-delay) + 90ms); }
+.slink-card:nth-child(5) { --card-delay: 200ms; animation-delay: calc(var(--card-delay) + 90ms); }
+
+@keyframes slinkCardSlideIn {
+  0% {
+    opacity: 0;
+    transform: skewX(var(--card-skew, -22deg)) translateX(-140px);
+  }
+  70% {
+    opacity: 1;
+    transform: skewX(var(--card-skew, -22deg)) translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: skewX(var(--card-skew, -22deg)) translateX(0px);
+  }
+}
+
+.slink-card:hover:not(.active) {
+  transform: skewX(var(--card-skew)) translateX(8px);
+  filter: drop-shadow(0 2px 12px rgba(0, 160, 255, 0.35));
+}
+
+.slink-card.active {
+  width: clamp(620px, 55.5vw, 810px) !important;
+  transform: skewX(var(--card-skew)) translateX(16px) !important;
+  z-index: 10;
+  filter: drop-shadow(0 6px 24px rgba(0, 160, 255, 0.45));
+}
+
+/* Unified Flex Row */
+.card-unified-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Sharp Solid Box for Roman Numeral */
+.card-numeral-box {
+  width: clamp(66px, 5.0vw, 82px);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #041630;
+  border-right: 1.5px solid rgba(0, 210, 255, 0.45);
+  flex-shrink: 0;
+  position: relative;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.slink-card.active .card-numeral-box {
+  background: #041630 !important;
+  border-right: 2px solid rgba(0, 20, 60, 0.2) !important;
+}
+
+.card-numeral-text {
+  font-family: var(--font-rodin), var(--font-skip), sans-serif;
+  font-size: clamp(1.65rem, 1.9vw, 2.2rem);
+  font-weight: 900;
+  font-style: italic;
+  transform: skewX(var(--card-unskew));
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+/* Unified Main Body: Title & Caption */
+.card-main-body {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 2.2rem 0 1.8rem;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #00549c 0%, #004282 100%);
+  border-top: 1.5px solid rgba(110, 215, 255, 0.5);
+  border-right: 2.5px solid rgba(0, 210, 255, 0.6);
+  border-bottom: 1px solid rgba(0, 30, 70, 0.5);
+  box-shadow: 0 4px 14px rgba(0, 20, 60, 0.35);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.slink-card.active .card-main-body {
+  background: linear-gradient(90deg, #ffffff 0%, #f4f9ff 100%) !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+  box-shadow: 0 4px 18px rgba(0, 20, 60, 0.25) !important;
+}
+
+/* Project Title Text - Now using Skip Std B as requested */
+.card-title-text {
+  font-family: var(--font-skip), sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  font-size: clamp(1.4rem, 1.6vw, 1.78rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  transform: skewX(var(--card-unskew));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 15, 45, 0.6);
+  transition: color 0.2s ease;
+}
+
+.slink-card.active .card-title-text {
+  color: #061a35 !important;
+  text-shadow: none !important;
+}
+
+/* Subtitle / Caption Text */
+.card-subtitle-text {
+  font-family: var(--font-rodin-medium), var(--font-new-rodin), sans-serif;
+  font-weight: 600;
+  font-style: italic;
+  font-size: clamp(0.9rem, 1.0vw, 1.12rem);
+  line-height: 1.2;
+  transform: skewX(var(--card-unskew));
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #8ee6ff;
+  margin-top: 4px;
+  transition: color 0.2s ease;
+}
+
+.slink-card.active .card-subtitle-text {
+  color: #244b79 !important;
+}
+
+/* Red Accent Stripe on Right when Active */
+.card-red-accent {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 28px;
+  background: #e60024;
+  clip-path: polygon(42% 0, 100% 0, 100% 100%, 0% 100%);
+  z-index: 5;
+}
+
+.slink-card.active .card-red-accent {
+  display: block;
+}
+
+/* Bottom Right HUD: Controls matching Menu Utama */
+.slink-bottom-hud {
+  position: absolute;
+  right: 2.5rem;
+  bottom: 2rem;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 25;
+}
+
+.slink-hud-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: transform 0.15s ease;
+}
+
+.control-key svg {
+  display: block;
+}
+
+.slink-hud-btn:hover {
+  transform: scale(1.08);
+}
+
+/* Responsive Scaling for Smaller Heights */
+@media (max-height: 720px) {
+  .slink-viewport {
+    padding: 3.5vh 0 2.5vh 4.5vw;
+  }
+  .p3r-banner-title {
+    font-size: clamp(2.6rem, 3.6vw, 3.2rem);
+  }
+  .slink-card {
+    height: 50px;
+    width: clamp(420px, 42vw, 540px);
+  }
+  .card-title-text {
+    font-size: 1.15rem;
+  }
+  .card-subtitle-text {
+    font-size: 0.72rem;
+  }
+}
+

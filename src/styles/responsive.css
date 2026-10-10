@@ -1,0 +1,541 @@
+/* ==========================================================================
+   RESPONSIVE LAYER
+   Everything below applies only to viewports that the original site rejected
+   (narrower than 1024px) or to short landscape screens. Desktop layouts are
+   untouched because none of these rules match a 1024px-or-wider viewport with
+   a height above 500px.
+
+   Order inside this file: tablets & phones (<=1023px), phones in portrait
+   (<=767px), short landscape screens (height <=500px).
+   ========================================================================== */
+
+/* Use the dynamic viewport where supported so mobile browser toolbars do not
+   clip the bottom of full-screen layers. */
+.p3r-main,
+.p3r-slink-screen,
+.background-video,
+.slink-video-container {
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* ------------------------------------------------------------------ tablets & phones */
+@media (max-width: 1023px) {
+  /* Background video: fill the screen (cover) instead of letterboxing. */
+  .background-video {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    object-fit: cover;
+    object-position: 62% bottom;
+  }
+
+  /* Main menu sits further in from the left and scales to fit. */
+  .menu-column {
+    left: 9vw;
+    top: 52%;
+    transform: translateY(-50%) scale(0.8);
+    transform-origin: left center;
+  }
+
+  .profile-name-text {
+    font-size: clamp(1.6rem, 4.2vw, 2.4rem);
+  }
+
+  .profile-accent-line {
+    width: clamp(140px, 26vw, 240px);
+  }
+
+  .side-number {
+    font-size: 30vh;
+    top: -8rem;
+  }
+
+  /* Sub-pages: content may be taller than the screen, so the viewport scrolls. */
+  .slink-viewport {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 2.5vh 0 0 0;
+    padding-bottom: 92px; /* room for the bottom button bar */
+    scrollbar-width: none;
+  }
+
+  .slink-viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Button hints become a centred bar along the bottom edge. */
+  .slink-bottom-hud {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 14px 16px calc(14px + env(safe-area-inset-bottom, 0px));
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(0, 18, 51, 0) 0%, rgba(0, 12, 34, 0.92) 55%);
+    pointer-events: auto;
+  }
+
+  .slink-bottom-hud .buttons-row {
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .p3r-contact-bottom-hud {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 14px 16px calc(14px + env(safe-area-inset-bottom, 0px));
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(0, 18, 51, 0) 0%, rgba(0, 12, 34, 0.92) 55%);
+  }
+
+  /* Shared banner and header offsets scale with the screen. */
+  .slink-profile-header {
+    margin-left: 6vw;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+  }
+
+  .slink-left-column {
+    max-width: 100%;
+  }
+
+  .p3r-geometric-header {
+    width: min(78vw, 640px);
+    height: clamp(84px, 11vh, 110px);
+    margin-bottom: clamp(18px, 3vh, 30px);
+  }
+
+  .p3r-banner-title {
+    margin-left: 6vw;
+    font-size: clamp(2.6rem, 8.5vw, 4rem);
+  }
+
+  /* PROJECT cards: a comfortable width for touch, with the same slant. */
+  .slink-cards-container {
+    margin-left: 6vw;
+    --card-height: clamp(64px, 9vh, 80px);
+  }
+
+  .slink-card {
+    width: min(74vw, 620px);
+  }
+
+  .slink-card.active {
+    width: min(80vw, 680px) !important;
+  }
+
+  .card-title-text {
+    font-size: clamp(1.15rem, 3.4vw, 1.5rem);
+  }
+
+  .card-subtitle-text {
+    font-size: clamp(0.78rem, 2.2vw, 0.95rem);
+  }
+
+  /* SKILLS */
+  .p3r-skill-tabs {
+    margin-left: 6vw;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .p3r-skills-container {
+    margin-left: 6vw;
+    width: min(88vw, 760px);
+    max-height: calc(100vh - 290px);
+    max-height: calc(100dvh - 290px);
+    padding-right: 12px;
+    padding-bottom: 24px;
+  }
+
+  .p3r-stat-row {
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    padding: 10px 14px;
+  }
+
+  .p3r-stat-name-col {
+    width: 100%;
+  }
+
+  .p3r-stat-name {
+    white-space: normal;
+  }
+
+  .p3r-stat-bar-track {
+    flex: 1 1 200px;
+  }
+
+  /* ABOUT */
+  .p3r-about-left-column {
+    max-width: 100%;
+  }
+
+  .p3r-about-card {
+    margin-left: 6vw;
+    width: min(88vw, 720px);
+    padding: 26px 26px;
+    gap: 18px;
+  }
+
+  .p3r-photo-box {
+    width: 96px;
+    height: 96px;
+  }
+
+  .p3r-about-top-row {
+    gap: 18px;
+  }
+
+  /* CONTACT */
+  :root {
+    --mail-skew: -7deg;
+    --mail-rot: -1.2deg;
+  }
+
+  .p3r-mail-phone-wrap {
+    width: min(84vw, 680px);
+    height: min(66vh, 620px);
+    min-height: 420px;
+  }
+
+  .p3r-mail-phone-card {
+    padding: 26px 26px 26px 24px;
+  }
+
+  .p3r-mail-header-row {
+    height: 64px;
+  }
+
+  .p3r-mail-watermark {
+    font-size: clamp(3.6rem, 12vw, 5.2rem);
+  }
+
+  .p3r-mail-row {
+    height: clamp(74px, 11vh, 92px);
+  }
+
+  .p3r-mail-icon-block {
+    width: clamp(72px, 16vw, 110px);
+  }
+
+  .p3r-mail-msg-text {
+    font-size: clamp(1rem, 3.2vw, 1.3rem);
+  }
+
+  .p3r-mail-sender-row {
+    font-size: clamp(0.95rem, 2.8vw, 1.1rem);
+  }
+}
+
+/* -------------------------------------------------------------- phones, portrait */
+@media (max-width: 767px) and (orientation: portrait) {
+  .background-video {
+    object-position: 58% bottom;
+  }
+
+  .menu-column {
+    left: 7vw;
+    top: 50%;
+    transform: translateY(-50%) scale(0.5);
+  }
+
+  .menu-profile-header {
+    top: 2.6vh;
+    right: 5vw;
+  }
+
+  .side-number {
+    font-size: 24vh;
+    left: -6rem;
+    top: -8rem;
+  }
+
+  .p3r-geometric-header {
+    width: 86vw;
+  }
+
+  .p3r-banner-title {
+    font-size: clamp(2.3rem, 11vw, 3rem);
+  }
+
+  .slink-cards-container {
+    margin-left: 5vw;
+  }
+
+  .slink-card {
+    width: 84vw;
+    margin-left: calc(var(--card-idx, 0) * 0.9vw);
+  }
+
+  .slink-card.active {
+    width: 88vw !important;
+  }
+
+  .card-numeral-box {
+    width: 52px;
+  }
+
+  .card-main-body {
+    padding: 0 1.2rem 0 1.1rem;
+  }
+
+  .card-numeral-text {
+    font-size: 1.4rem;
+  }
+
+  .p3r-skill-tab {
+    padding: 6px 12px;
+  }
+
+  .p3r-tab-label {
+    font-size: 0.85rem;
+  }
+
+  .p3r-skills-container {
+    width: 88vw;
+    margin-left: 5vw;
+    max-height: calc(100dvh - 330px);
+  }
+
+  .p3r-stat-name {
+    font-size: 1rem;
+  }
+
+  .p3r-group-title {
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+  }
+
+  .p3r-about-card {
+    margin-left: 5vw;
+    width: 90vw;
+    padding: 20px 20px;
+  }
+
+  .p3r-about-name {
+    font-size: 1.6rem;
+  }
+
+  .p3r-about-p {
+    font-size: 0.92rem;
+  }
+
+  .p3r-photo-box {
+    width: 84px;
+    height: 84px;
+  }
+
+  .p3r-about-top-row {
+    align-items: center;
+    gap: 14px;
+  }
+
+  .p3r-mail-phone-wrap {
+    width: 88vw;
+    height: 60vh;
+    min-height: 380px;
+    transform-origin: left center;
+  }
+
+  .p3r-mail-phone-card {
+    padding: 20px 18px 20px 18px;
+  }
+
+  .p3r-mail-watermark {
+    font-size: 3.6rem;
+  }
+
+  .p3r-mail-list-container {
+    padding-right: 8px;
+    gap: 12px;
+  }
+
+  .p3r-mail-row {
+    height: auto;
+    min-height: 74px;
+  }
+
+  .p3r-mail-icon-block {
+    width: 64px;
+  }
+
+  .p3r-mail-content-block {
+    padding: 8px 12px;
+  }
+
+  .p3r-mail-msg-text {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* ------------------------------------------------------- short landscape screens */
+@media (max-height: 500px) and (orientation: landscape) {
+  .menu-column {
+    transform: translateY(-50%) scale(0.62);
+    left: 6vw;
+    top: 50%;
+  }
+
+  .side-number {
+    font-size: 60vh;
+  }
+
+  .hud-controls {
+    bottom: 0.6rem;
+  }
+
+  /* Sub-pages: compact header so the content has room. */
+  .slink-viewport {
+    padding-top: 1.5vh;
+  }
+
+  .slink-profile-header {
+    margin-top: 0;
+    margin-bottom: 1vh;
+  }
+
+  .p3r-geometric-header {
+    height: 58px;
+    margin-bottom: 10px;
+  }
+
+  .p3r-banner-title {
+    font-size: 2.2rem;
+    padding-top: 0;
+  }
+
+  /* PROJECT: five cards must clear the bottom button bar. */
+  .slink-cards-container {
+    --card-gap: 5px;
+  }
+
+  .slink-card {
+    height: 40px;
+    width: min(64vw, 520px);
+  }
+
+  .slink-card.active {
+    width: min(70vw, 560px) !important;
+  }
+
+  .card-title-text {
+    font-size: 1rem;
+  }
+
+  .card-subtitle-text {
+    font-size: 0.66rem;
+  }
+
+  /* SKILLS: one line per stat so several rows fit. */
+  .p3r-skill-tabs {
+    margin-bottom: 8px;
+  }
+
+  .p3r-skill-group-header {
+    margin-bottom: 8px;
+  }
+
+  .p3r-skills-container {
+    max-height: calc(100dvh - 170px);
+  }
+
+  .p3r-skill-rows-list {
+    gap: 8px;
+  }
+
+  .p3r-stat-row {
+    flex-wrap: nowrap;
+    padding: 6px 12px;
+    gap: 14px;
+  }
+
+  .p3r-stat-name-col {
+    width: 34vw;
+  }
+
+  .p3r-stat-name {
+    white-space: nowrap;
+    font-size: 0.95rem;
+  }
+
+  .p3r-stat-bar-track {
+    flex: 1 1 auto;
+    height: 16px;
+  }
+
+  /* ABOUT */
+  .p3r-about-card {
+    width: min(80vw, 640px);
+    padding: 14px 18px;
+    gap: 10px;
+  }
+
+  .p3r-about-bio {
+    gap: 6px;
+  }
+
+  .p3r-about-p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  /* CONTACT: five rows, each tall enough for its two lines of text. */
+  .p3r-mail-phone-wrap {
+    height: 88vh;
+    min-height: 0;
+  }
+
+  .p3r-mail-phone-card {
+    padding: 12px 22px 14px 20px;
+  }
+
+  .p3r-mail-header-row {
+    height: 40px;
+    margin-bottom: 4px;
+  }
+
+  .p3r-mail-watermark {
+    font-size: 2.8rem;
+  }
+
+  .p3r-mail-list-container {
+    gap: 7px;
+  }
+
+  .p3r-mail-row {
+    height: auto;
+    min-height: 56px;
+  }
+
+  .p3r-mail-row-empty {
+    min-height: 40px;
+  }
+
+  .p3r-mail-content-block {
+    padding: 4px 14px;
+  }
+
+  .p3r-mail-row-line {
+    margin: 3px 0 2px 0;
+  }
+
+  .p3r-mail-sender-row {
+    font-size: 0.95rem;
+  }
+
+  .p3r-mail-msg-text {
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+
+  .p3r-mail-icon-block {
+    width: 84px;
+  }
+}

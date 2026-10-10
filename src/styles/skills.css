@@ -1,0 +1,253 @@
+/* ==========================================================================
+   PERSONA 3 RELOAD - SKILLS STATS PAGE
+   Adapted from porto-persona5 Stats Skill concept with authentic P3R aesthetic
+   ========================================================================== */
+/* .p3r-skill-screen inherits base layout from .p3r-slink-screen */
+
+/* .p3r-skill-viewport aligns with .slink-viewport */
+
+.p3r-skill-left-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 92vw;
+  pointer-events: auto;
+}
+
+/* Category Filter Tabs (P3R Slanted Aesthetic) */
+.p3r-skill-tabs {
+  margin-left: 5.0vw;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+  z-index: 10;
+  position: relative;
+  pointer-events: auto;
+}
+
+.p3r-skill-tab {
+  transform: skewX(-14deg);
+  background: rgba(2, 11, 24, 0.88);
+  border: 1.5px solid rgba(22, 207, 251, 0.45);
+  padding: 7px 18px;
+  color: #a0d8ef;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  outline: none;
+}
+
+.p3r-tab-tag {
+  display: inline-block;
+  transform: skewX(14deg);
+  color: #16cffb;
+  font-family: var(--font-new-rodin-ub), sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+.p3r-tab-label {
+  display: inline-block;
+  transform: skewX(14deg);
+  color: #e0f6ff;
+  font-family: var(--font-new-rodin-ub), sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+}
+
+.p3r-skill-tab:hover {
+  background: rgba(22, 207, 251, 0.22);
+  border-color: #16cffb;
+  transform: skewX(-14deg) translateY(-2px);
+  box-shadow: 0 4px 14px rgba(22, 207, 251, 0.35);
+}
+
+.p3r-skill-tab.active {
+  background: linear-gradient(90deg, #004fb3 0%, #16cffb 100%);
+  border-color: #ffffff;
+  transform: skewX(-14deg) translateY(-2px);
+  box-shadow: 0 0 16px rgba(22, 207, 251, 0.65), 3px 3px 0 #000;
+}
+
+.p3r-skill-tab.active .p3r-tab-tag {
+  color: #020914;
+  background: #ffffff;
+  padding: 0 5px;
+  border-radius: 2px;
+}
+
+.p3r-skill-tab.active .p3r-tab-label {
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+/* Skills Stats Container (Single Category Focused Layout) */
+.p3r-skills-container {
+  margin-left: 5.0vw;
+  width: min(88vw, 1100px);
+  max-height: calc(100vh - 270px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 24px;
+  padding-bottom: 45px;
+  scrollbar-width: thin;
+  scrollbar-color: #16cffb rgba(2, 11, 24, 0.6);
+  pointer-events: auto;
+}
+
+.p3r-skills-container::-webkit-scrollbar {
+  width: 6px;
+}
+.p3r-skills-container::-webkit-scrollbar-track {
+  background: rgba(2, 11, 24, 0.6);
+}
+.p3r-skills-container::-webkit-scrollbar-thumb {
+  background: #16cffb;
+  border-radius: 3px;
+  box-shadow: 0 0 6px rgba(22, 207, 251, 0.8);
+}
+
+/* Skill Group Section */
+.p3r-skill-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.p3r-skill-group-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  user-select: none;
+}
+
+.p3r-group-title {
+  font-family: var(--font-new-rodin-ub), sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: clamp(1.15rem, 1.35vw, 1.45rem);
+  color: #ffffff;
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.95);
+}
+
+.p3r-group-line {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, #16cffb 0%, rgba(22, 207, 251, 0.3) 60%, transparent 100%);
+}
+
+.p3r-skill-rows-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Individual Stat Skill Row (Staggered Animation Entrance) */
+.p3r-stat-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 10px 20px;
+  background: rgba(2, 9, 20, 0.82);
+  border-left: 4px solid #16cffb;
+  border-bottom: 1px solid rgba(22, 207, 251, 0.18);
+  transform: skewX(-14deg);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, border-left-color 0.2s ease;
+  user-select: none;
+  animation: p3rSkillRowIn 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@keyframes p3rSkillRowIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(-35px, 0, 0) skewX(-14deg);
+  }
+  70% {
+    opacity: 1;
+    transform: translate3d(3px, 0, 0) skewX(-14deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) skewX(-14deg);
+  }
+}
+
+.p3r-stat-row:hover {
+  background: rgba(0, 32, 74, 0.94);
+  border-left-color: #ffffff;
+  transform: skewX(-14deg) translateX(10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+.p3r-stat-name-col {
+  width: clamp(280px, 24vw, 410px);
+  flex-shrink: 0;
+  transform: skewX(14deg); /* Unskew text for crisp readability */
+  overflow: hidden;
+}
+
+.p3r-stat-name {
+  font-family: var(--font-skip), sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(1.02rem, 1.12vw, 1.22rem);
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.95);
+}
+
+/* Slanted Brilliant White Progress Bar (Indikator Putih Solid - Tanpa Glowing) */
+.p3r-stat-bar-track {
+  flex: 1;
+  height: 20px;
+  background: rgba(2, 12, 28, 0.75);
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  transform: skewX(-8deg);
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
+  background-image: repeating-linear-gradient(90deg, transparent 0 22px, rgba(255, 255, 255, 0.12) 22px 24px);
+}
+
+.p3r-stat-bar-fill {
+  position: absolute;
+  inset: 0;
+  background: #ffffff; /* Indikator Berwarna Putih Murni Bersih Tanpa Glowing */
+  background-image: repeating-linear-gradient(90deg, transparent 0 22px, rgba(22, 207, 251, 0.45) 22px 25px);
+  box-shadow: none !important; /* Glowing Dihilangkan Sesuai Permintaan */
+  transition: none !important;
+}
+
+.p3r-stat-bar-tip {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: #e60024;
+  box-shadow: none !important; /* Glowing Dihilangkan Sesuai Permintaan */
+}
+
+/* Level Indicator Dihilangkan Sesuai Permintaan */
+.p3r-stat-lv {
+  display: none !important;
+}
+

@@ -1,0 +1,189 @@
+/* ==========================================================================
+   PERSONA 3 RELOAD - ABOUT ME PAGE
+   Simple Left-Docked Layout with Photo Frame Placeholder & Developer Bio
+   ========================================================================== */
+/* .p3r-about-screen & .p3r-about-viewport inherit layout from .p3r-slink-screen & .slink-viewport */
+
+.p3r-about-left-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: min(760px, 58vw);
+  pointer-events: auto;
+}
+
+/* Left-Docked About Card (Larger, Solid Deep Black, No Transparency, No Blue Line) */
+.p3r-about-card {
+  margin-left: 5vw;
+  width: min(720px, 56vw);
+  background: #090d14; /* 100% Solid Deep Black - Tanpa Transparansi */
+  border: 1px solid #1c2433;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.96);
+  padding: 34px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+  position: relative;
+  pointer-events: auto;
+  user-select: text;
+}
+
+.p3r-about-card,
+.p3r-about-card * {
+  font-family: var(--font-poppins), sans-serif;
+}
+
+.p3r-about-card-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Top Section: Photo + Identity */
+.p3r-about-top-row {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+/* User Profile Photo Box */
+.p3r-photo-box {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid #2d3748;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+  background: #0d121c;
+}
+
+.p3r-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Identity Details */
+.p3r-about-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.p3r-about-name {
+  font-family: var(--font-poppins), sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.85rem, 2.3vw, 2.45rem);
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.p3r-about-title {
+  font-family: var(--font-poppins), sans-serif;
+  font-weight: 500;
+  color: #94a3b8;
+  font-size: 1.05rem;
+  margin-top: 3px;
+}
+
+/* Bio Text */
+.p3r-about-bio {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  line-height: 1.68;
+}
+
+.p3r-about-p {
+  font-family: var(--font-poppins), sans-serif;
+  font-size: clamp(0.96rem, 1.06vw, 1.06rem);
+  color: #cbd5e1;
+  margin: 0;
+}
+
+.p3r-about-p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.p3r-about-p em {
+  color: #f1f5f9;
+  font-style: italic;
+}
+
+/* Inspiring Quote Box (Solid Charcoal, No Blue Lines) */
+.p3r-about-quote {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: #111722; /* Solid dark charcoal - tanpa transparansi */
+  border-left: 3px solid #334155; /* Soft gray border - tanpa garis biru */
+  padding: 16px 22px;
+  border-radius: 0 6px 6px 0;
+  margin-top: 4px;
+}
+
+.p3r-quote-mark {
+  font-family: var(--font-poppins), sans-serif;
+  font-size: 2.0rem;
+  line-height: 1;
+  color: #94a3b8; /* Muted gray - tanpa biru */
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.p3r-quote-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.p3r-quote-text {
+  margin: 0;
+  font-family: var(--font-poppins), sans-serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #f1f5f9;
+  line-height: 1.5;
+}
+
+.p3r-quote-author {
+  font-family: var(--font-poppins), sans-serif;
+  font-weight: 600;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+/* Responsive adjustment for small screen heights */
+@media (max-height: 720px) {
+  .p3r-about-card {
+    padding: 16px 22px;
+    width: min(540px, 46vw);
+    gap: 12px;
+  }
+  .p3r-photo-box {
+    width: 85px;
+    height: 85px;
+  }
+  .p3r-about-card-inner {
+    gap: 10px;
+  }
+  .p3r-about-bio {
+    gap: 8px;
+  }
+  .p3r-about-p {
+    font-size: 0.85rem;
+  }
+  .p3r-quote-text {
+    font-size: 0.82rem;
+  }
+}
+

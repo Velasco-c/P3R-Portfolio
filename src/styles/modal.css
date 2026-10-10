@@ -1,0 +1,161 @@
+/* --------------------------------------------------------------------------
+   Portfolio Modal (Persona 3 Glassmorphism HUD Style)
+   -------------------------------------------------------------------------- */
+.portfolio-modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(3, 20, 70, 0.88);
+  backdrop-filter: blur(6px);
+  z-index: 300;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.portfolio-modal.active {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.portfolio-modal.circle-transitioning {
+  display: flex !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+  will-change: clip-path;
+}
+
+.modal-card {
+  width: 58rem;
+  max-width: 90vw;
+  max-height: 85vh;
+  background: linear-gradient(135deg, rgba(1, 95, 204, 0.95), rgba(3, 31, 100, 0.98));
+  border: 3px solid var(--color-fg);
+  outline: 4px solid var(--color-border);
+  border-radius: 0.75rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(22, 207, 251, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portfolio-modal.active .modal-card {
+  transform: scale(1) translateY(0);
+}
+
+.modal-header {
+  background-color: #ffffff;
+  color: var(--color-bg-dark);
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid var(--color-red);
+}
+
+.modal-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.modal-tag {
+  background-color: var(--color-red);
+  color: #ffffff;
+  font-family: var(--font-skip);
+  font-size: 1rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.25rem;
+  font-style: normal;
+  letter-spacing: 0.05em;
+}
+
+.modal-title {
+  font-size: 2.25rem;
+  font-family: var(--font-rodin);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.05em;
+  color: var(--color-bg-dark);
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: 2px solid var(--color-bg-dark);
+  border-radius: 9999px;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: var(--font-rodin);
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--color-bg-dark);
+  transition: all 0.15s ease;
+}
+
+.modal-close-btn:hover {
+  background-color: var(--color-red);
+  color: #ffffff;
+  border-color: var(--color-red);
+}
+
+.modal-body {
+  padding: 2.5rem;
+  overflow-y: auto;
+  font-family: var(--font-new-rodin);
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+.modal-content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.modal-info-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(22, 207, 251, 0.4);
+  border-left: 5px solid var(--color-button-1);
+  padding: 1.25rem;
+  border-radius: 0.375rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.modal-info-card:hover {
+  transform: translateY(-3px);
+  border-left-color: var(--color-pink);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.info-card-title {
+  font-family: var(--font-skip);
+  font-size: 1.25rem;
+  color: var(--color-button-2);
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.info-card-desc {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.modal-footer {
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  align-items: center;
+}
+

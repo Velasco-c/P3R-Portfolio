@@ -1,0 +1,42 @@
+/* --------------------------------------------------------------------------
+   Font Faces  (WOFF2, Latin subset; files live in /public/fonts)
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Rodin Pro Bold";
+  src: url("/fonts/rodin-pro-bold.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rodin Pro Medium";
+  src: url("/fonts/rodin-pro-medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NewRodin Pro";
+  src: url("/fonts/newrodin-pro-regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NewRodin Pro UB";
+  src: url("/fonts/newrodin-pro-bold.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Skip Std B";
+  src: url("/fonts/skip-std-bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}

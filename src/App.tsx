@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type MouseEvent, type RefObject } from 'react';
 import { hud, mailRows, media, menuOptions, projects, site, skillGroups, skillTabs } from './content';
 import { sfx, type SfxName } from './engine/audio';
+import { music } from './engine/music';
 import { getOptionOrigin } from './engine/origins';
 import { readBootPlan, readInitialSelection, readModalParam } from './engine/boot';
 import type { Point } from './engine/wavy';
@@ -123,6 +124,7 @@ export default function App() {
     startedRef.current = true;
     sfx.markEntered();
     void sfx.playMenuTheme();
+    music.autoplay();
     setLoadingDismissed(true);
     window.setTimeout(() => setLoadingVisible(false), DISMISS_MS);
     setMenuEntered(true);
@@ -462,5 +464,4 @@ export default function App() {
       />
     </>
   );
-}
-
+};

@@ -95,6 +95,25 @@ class MusicEngine {
     }
   }
 
+  /**
+   * Starts the first track when the page opens. Browsers block sound until the
+   * visitor interacts with the page, so if that happens, the track starts on the
+   * first click or key press instead.
+   */
+  autoplay(): void {
+    const el = this.ensureSource();
+    el.play().catch((err: unknown) => {
+      if ((err as { name?: string })?.name !== 'NotAllowedError') return;
+      const retry = () => {
+        window.removeEventListener('pointerdown', retry, true);
+        window.removeEventListener('keydown', retry, true);
+        if (!this.state.playing) this.start();
+      };
+      window.addEventListener('pointerdown', retry, true);
+      window.addEventListener('keydown', retry, true);
+    });
+  }
+
   toggleMute(): void {
     const muted = !this.state.muted;
     if (this.el) this.el.muted = muted;
